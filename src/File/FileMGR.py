@@ -1,9 +1,15 @@
+import pandas as pd
+
 class FileMGR:
     def fileReader(path):
-        try:
-            with open(path, "r") as file:
-                return file.read()
-        except FileNotFoundError:
-            raise FileNotFoundError(f"The file at '{path}' was not found.")
-        except IOError as e:
-            raise IOError(f"An error occurred while reading the file: {e}")
+        if path.endswith('.csv'):
+            data = pd.read_csv(path)
+        elif path.endswith('.data'):
+        # Assuming the data file uses whitespace as delimiter
+            data = pd.read_csv(path, delim_whitespace = True)
+        elif path.endswith('.xlsx'):
+            data = pd.read_excel(path)
+        else:
+            raise ValueError("Unsupported file format.")
+
+        return data
