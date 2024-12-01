@@ -6,7 +6,7 @@ class FileMGR:
             data = pd.read_csv(path)
         elif path.endswith('.data'):
         # Assuming the data file uses whitespace as delimiter
-            data = pd.read_csv(path, delim_whitespace = True)
+            data = pd.read_csv(path, sep='\s+')
         elif path.endswith('.xlsx'):
             data = pd.read_excel(path)
         else:
