@@ -2,8 +2,8 @@ import os
 from File.FileMGR import FileMGR
 
 def main():
-    # Assuming the AutoMPG dataset is a CSV file
-    datasetPath = os.path.join('AutoMPG', 'auto-mpg.data')  # Adjust path as needed
+    # Assuming the CarEvaluation dataset is a CSV file
+    datasetPath = os.path.join('CarEvaluation', 'car.data')  # Adjust path as needed
 
     # Read the dataset using FileMGR
     data = FileMGR.fileReader(datasetPath)
