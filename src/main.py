@@ -6,10 +6,11 @@ def main():
     datasetPath = os.path.join('CarEvaluation', 'car.data')  # Adjust path as needed
 
     # Read the dataset using FileMGR
-    data = FileMGR.fileReader(datasetPath)
+    df = FileMGR.fileReader(datasetPath)
+    df = FileMGR.datasetChanger(df)
 
     # Now you can work with the data
-    print(data)
+    print(df)
 
 if __name__ == '__main__':
     main()
