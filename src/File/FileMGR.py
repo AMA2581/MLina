@@ -12,4 +12,22 @@ class FileMGR:
         else:
             raise ValueError("Unsupported file format.")
 
-        return data
+        df = pd.DataFrame(data)
+
+        return df
+    
+    def datasetChanger(df):
+        attribute_mapping = {
+            'buying': {'vhigh': 3, 'high': 2, 'med': 1, 'low': 0},
+            'maint': {'vhigh': 3, 'high': 2, 'med': 1, 'low': 0},
+            'doors': {'2': 0, '3': 1, '4': 2, '5more': 3},
+            'persons': {'2': 0, '4': 1, 'more': 2},
+            'lug_boot': {'small': 0, 'med': 1, 'big': 2},
+            'safety': {'low': 0, 'med': 1, 'high': 2}
+        }
+
+        for attribute, mapping in attribute_mapping.items():
+            df[attribute] = df[attribute].replace(mapping)
+
+        return df
+            
