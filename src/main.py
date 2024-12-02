@@ -2,12 +2,6 @@ import os
 from File.FileMGR import FileMGR
 from math import sqrt
 
-
-def split_data(dataset, ratio=0.3) -> list:
-    index = int(len(dataset) * (1-ratio))
-    return dataset[:index], dataset[index:]
-
-
 def euclidean_distance(p1, p2):
     return sqrt(sum((x - y)**2 for x, y in zip(p1, p2)))
 
@@ -27,14 +21,16 @@ def main():
     datasetPath = os.path.join(
         'CarEvaluation', 'car.data')  # Adjust path as needed
 
+    fileMGR = FileMGR()
     # Read the dataset using FileMGR
-    df = FileMGR.fileReader(datasetPath)
-    df = FileMGR.datasetChanger(df)
-    data = FileMGR.dfToList(df)
+    df = fileMGR.fileReader(datasetPath)
+    df = fileMGR.datasetChanger(df)
+    data = fileMGR.dfToList(df)
+    del df
 
     # Now you can work with the data
     correct = 0
-    train_data, test_data = split_data(data)
+    train_data, test_data = fileMGR.split_data(data)
     for features, true_label in test_data:
         prediction_label = knn(train_data, features, 5)
         if prediction_label == true_label:
