@@ -12,3 +12,13 @@ doors:    2, 3, 4, 5more.
 persons:  2, 4, more.
 lug_boot: small, med, big.
 safety:   low, med, high.
+
+| changed attributes
+
+buying:   3, 2, 1, 0
+maint:    3, 2, 1, 0
+doors:    0, 1, 2, 3
+persons:  0, 1, 2
+lug_boot: 0, 1, 2
+safety:   0, 1, 2
+
