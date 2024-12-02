@@ -1,5 +1,5 @@
 import os
-from File.FileMGR import FileMGR
+from FileMGR import FileMGR
 from math import sqrt
 
 def euclidean_distance(p1, p2):
