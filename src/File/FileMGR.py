@@ -31,6 +31,13 @@ class FileMGR:
 
         return df
     
+    def dfToList(df):
+        featureList = df.drop('class', axis=1).values.tolist()
+        labelList = df['class'].values.tolist()
+        
+        return list(zip(featureList, labelList))
+
+    
 
     
             

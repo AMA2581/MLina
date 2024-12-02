@@ -1,16 +1,6 @@
 import os
 from File.FileMGR import FileMGR
-import csv
 from math import sqrt
-
-
-def load_dataset(path: str) -> list:
-    data = []
-    with open(path, "r") as file:
-        file_reader = csv.reader(file)
-        for row in file_reader:
-            data.append((list(map(int, row[:-1])), row[-1]))
-        return data
 
 
 def split_data(dataset, ratio=0.3) -> list:
@@ -40,9 +30,9 @@ def main():
     # Read the dataset using FileMGR
     df = FileMGR.fileReader(datasetPath)
     df = FileMGR.datasetChanger(df)
+    data = FileMGR.dfToList(df)
 
     # Now you can work with the data
-    data = load_dataset("output.csv")
     correct = 0
     train_data, test_data = split_data(data)
     for features, true_label in test_data:
