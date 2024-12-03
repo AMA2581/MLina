@@ -18,7 +18,7 @@ def main():
     correct = 0
     train_data, test_data = fileMGR.split_data(data)
     for features, true_label in test_data:
-        prediction_label = knn.knn(train_data, features, 5)
+        prediction_label = knn.knn(train_data, features, 3)
         if prediction_label == true_label:
             correct += 1
         
