@@ -1,7 +1,8 @@
 import pandas as pd
 
 class FileMGR:
-    def fileReader(path):
+    # reads dataset file
+    def fileReader(self, path):
         if path.endswith('.csv'):
             data = pd.read_csv(path)
         elif path.endswith('.data'):
@@ -16,7 +17,8 @@ class FileMGR:
 
         return df
     
-    def datasetChanger(df):
+    
+    def datasetChanger(self, df):
         attribute_mapping = {
             'buying': {'vhigh': 3, 'high': 2, 'med': 1, 'low': 0},
             'maint': {'vhigh': 3, 'high': 2, 'med': 1, 'low': 0},
@@ -30,4 +32,13 @@ class FileMGR:
             df[attribute] = df[attribute].replace(mapping)
 
         return df
-            
+    
+    def dfToList(self, df):
+        featureList = df.drop('class', axis=1).values.tolist()
+        labelList = df['class'].values.tolist()
+
+        return list(zip(featureList, labelList))
+
+    def split_data(self, dataset, ratio=0.3) -> list:
+        index = int(len(dataset) * (1-ratio))
+        return dataset[:index], dataset[index:]
