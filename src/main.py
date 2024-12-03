@@ -22,8 +22,9 @@ def main():
         if prediction_label == true_label:
             correct += 1
         
-
+    # change for input
     input_data = [1,2,2,2,1,2]
+    
     prediction_label = knn.knn(train_data, input_data, 3)
     print(prediction_label)
 

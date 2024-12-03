@@ -1,6 +1,7 @@
 import pandas as pd
 
 class FileMGR:
+    # reads dataset file
     def fileReader(self, path):
         if path.endswith('.csv'):
             data = pd.read_csv(path)
@@ -15,6 +16,7 @@ class FileMGR:
         df = pd.DataFrame(data)
 
         return df
+    
     
     def datasetChanger(self, df):
         attribute_mapping = {

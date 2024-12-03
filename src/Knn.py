@@ -1,9 +1,12 @@
 from math import sqrt
 
 class Knn:
+    # calculates euclidean distance (basically)
     def euclidean_distance(self, p1, p2):
         return sqrt(sum((x - y)**2 for x, y in zip(p1, p2)))
 
+    # calculates knn of the query based on train dataset
+    # with the count of k
     def knn(self, train, query, k):
         distance = []
         for features, label in train:
